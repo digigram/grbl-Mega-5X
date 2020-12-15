@@ -82,6 +82,13 @@
   #error "N_AXIS must be <= 6. N_AXIS > 6 is not implemented."
 #endif
 
+// Chose the spindle pin output :
+// SPINDLE_PWM_ON_D8 => 0-12v 16 bits PWM on RAMPS D8
+// SPINDLE_PWM_ON_D6 => 0-5v 8bits PWM on RAMPS Servo 2 signal (Mega 2560 D6)
+// Uncomment the line which correspond to your hardware
+#define SPINDLE_PWM_ON_D8
+// #define SPINDLE_PWM_ON_D6
+
 // Renaming axis doesn't change their number. By default, the status report give axis values in
 // the order of their number. Some graphical interface are not able to affect axis values reported
 // by Grbl to the correct axis name.
@@ -276,7 +283,7 @@
 // NOTE: The top option will mask and invert all control pins. The bottom option is an example of
 // inverting only two control pins, the safety door and reset. See cpu_map.h for other bit definitions.
 // #define INVERT_CONTROL_PIN_MASK CONTROL_MASK // Default disabled. Uncomment to disable.
-// #define INVERT_CONTROL_PIN_MASK ((1<<CONTROL_SAFETY_DOOR_BIT)|(CONTROL_RESET_BIT)) // Default disabled.
+// #define INVERT_CONTROL_PIN_MASK ((1<<CONTROL_SAFETY_DOOR_BIT)|(1<<CONTROL_RESET_BIT)) // Default disabled.
 
 // Inverts select limit pin states based on the following mask. This effects all limit pin functions,
 // such as hard limits and homing. However, this is different from overall invert limits setting.
